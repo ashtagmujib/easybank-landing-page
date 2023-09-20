@@ -1,0 +1,661 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+
+
+:root {
+    
+    --DarkBlue: hsl(233, 26%, 24%);
+    --LimeGreen: hsl(136, 63%, 35%);
+    --BrightCyan: hsl(192, 70%, 51%);
+
+    --GrayishBlue: hsl(233, 8%, 62%);
+    --LightGrayishBlue: hsl(220, 16%, 96%);
+    --VeryLightGray: hsl(0, 0%, 98%);
+    --White: hsl(0, 0%, 100%);
+
+}
+
+body {
+    background-color: var(--LightGrayishBlue);
+}
+
+.container {
+    width: 1440px;
+    scroll-behavior: smooth;
+    height: auto;
+    margin: 0 auto;
+    position: relative; 
+    overflow-x: hidden;
+}
+
+/* navigation section*/
+
+.navigation {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 150px;
+
+    background-color: var(--White);
+    position: relative;
+    z-index: 1000;
+}
+
+.blur {
+    display: none;
+}
+
+#hamburger-menu , #close-btn {
+    display: none;
+}
+
+
+.nav-links {
+    display: flex;
+}
+
+.for-mobile {
+   display: none;     
+}
+
+#link-item {
+    list-style: none;
+    position: relative;
+}
+
+#link-item::after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: 4px;
+    background-image:linear-gradient(to right, var(--LimeGreen),var(--BrightCyan));
+    visibility: hidden;
+    opacity: 0;
+}
+
+#link-item a:hover {
+    color: var(--DarkBlue);
+}
+
+#link-item:hover::after {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.2s ease-in-out 0.2s ;
+}
+
+#link-item a {
+    text-decoration: none;
+    color: var(--GrayishBlue);
+}
+
+#link-item:not(:last-of-type) {
+    margin-right: 30px;
+}
+
+
+#request-invite {
+    width: 180px;
+    height: 50px;
+    border-radius: 30px;
+    color: var(--White);
+    background-image: linear-gradient(to right,var(--LimeGreen), var(--BrightCyan));
+}
+
+#request-invite:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.1s ease-in-out ;
+}
+
+
+@media (max-width:375px) {
+        
+    .container {
+        width: 375px;
+        height: auto;
+    }
+
+    .blur {
+        width: 100%;
+        height:100vh;
+        background-color: var(--DarkBlue);
+        opacity: 40%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        display: none;
+    }
+
+    
+    .navigation {
+        padding: 30px;
+        z-index: 1;
+    }
+
+    #hamburger-menu {
+        display: block;
+    }
+
+    #close-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100px;
+        left: 20px;
+        width:330px;
+        background-color: var(--White);
+        padding: 50px 150px;
+        border-radius: 5px;
+        z-index: 20;
+        display: none;
+    }
+
+   
+   .navigation #request-invite {
+        display: none;
+    }
+
+        
+    #link-item::after {
+        display: none;
+    }
+
+    #link-item:not(:last-of-type) {
+        margin-bottom: 30px;
+    }
+
+
+}
+
+/*end of navigation section*/
+
+
+/*start of invite section*/
+
+.invite {
+    display: flex;
+    padding: 0;
+    background-color: var(--White);
+    position: relative;
+    padding-left: 150px;
+    width: 1440px;
+}
+
+
+#intro-desktop-img {
+    display: block;
+    width:1050px;
+    height: auto;
+    margin: -90px -230px 0 0;
+}
+
+#intro-mobile-img {
+    display: none;
+}
+
+#phone-mockup {
+    position: absolute;
+    top: 0;
+    right: -130px;
+}
+
+
+.invite-dts {
+    width: 50%;
+    padding-top: 230px;
+}
+
+.invite-dts h1 {
+    color: var(--DarkBlue);
+    font-size: 60px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.invite-dts p {
+    font-size: 21px;
+    margin-bottom: 50px;
+    color: var(--GrayishBlue);
+}
+
+
+
+
+
+@media (max-width:375px) {
+    
+    .invite {
+        width: 375px;
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 0;
+        padding-left: 0;
+    }
+
+
+    #intro-desktop-img {
+        display: block;
+        width: 670px;
+        height: auto;
+        margin: -230px 0 0 -90px;
+    }
+
+    #intro-mobile-img {
+        display: none;
+
+    }
+
+    #phone-mockup {
+        display: block;
+        width: 370px;
+        height: auto;
+        position: absolute;
+        top: -130px;
+        left: 4px;
+    }
+
+
+    .invite-dts {
+        width: 100%;
+        padding: 0 20px;
+        margin-top: 50px;
+    }
+
+    .invite-dts h1 {
+        font-size: 50px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .invite-dts p {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 50px;
+        color: var(--GrayishBlue);
+    }
+
+    .invite #request-invite {
+       display: block;
+       margin-left: 80px;
+       margin-bottom: 100px;
+    }
+
+}
+/*end of invite section*/
+
+/*start of easybank section*/
+
+.about-easybank {
+    width: 1440px;
+    padding:150px;
+}
+
+.about-easybank h1 {
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: var(--DarkBlue);
+}
+
+.about-easybank p {
+    font-size: 20px;
+    line-height: 25px;
+    color: var(--GrayishBlue);
+    width: 650px;
+}
+
+
+.easybank-perks {
+    margin: 100px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
+    column-gap: 30px;
+}
+
+
+#perk h1 {
+    margin: 30px 0;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--DarkBlue);
+}
+
+
+#perk p {
+    color: var(--GrayishBlue);
+    font-size: 19px;
+    line-height: 25px;
+    width: 100%;
+}
+
+@media (max-width:375px) {
+    .about-easybank {
+        width: 375px;
+        padding:100px 20px  ;
+    }
+    
+    .about-easybank h1 {
+        font-size: 50px;
+        font-weight: 300;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .about-easybank p {
+        font-size: 17px;
+        line-height: 25px;
+        text-align: center;
+        width: 100%;
+    }
+    
+    
+    .easybank-perks {
+        margin: 100px 0 0 0;
+        display: grid;
+        grid-template-columns: 330px;
+        grid-template-rows: repeat(4, 300px);
+        column-gap: 0px;
+        row-gap: 30px;
+    }
+    
+    #perk {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #perk h1, #perk p{
+        text-align: center;
+    }
+    
+    
+}
+
+/*end of easybank section*/
+
+
+/*start of article section*/
+
+.articles{
+    width: 1440px;
+    height: auto;
+    background-color: var(--VeryLightGray);
+    padding: 100px 150px;
+}
+
+.articles h1 {
+    font-size: 50px;
+    font-weight: 500;
+    color: var(--DarkBlue);
+}
+
+.articles-tab {
+    display: flex;
+    margin-top: 60px;
+}
+
+#article {
+    width: 270px;
+    height: auto;
+    border-radius: 10px;
+    background-color: var(--White);
+}
+
+
+#article:not(:last-of-type) {
+    margin-right: 30px;
+}
+
+#article img {
+    width: 270px;
+    height: 230px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px; 
+}
+
+#article-details {
+    padding: 20px 20px 40px;
+}
+
+#article-details cite {
+    font-size: 12px;
+    font-style: normal;
+    color: var(--GrayishBlue);
+}
+
+#article-details h2 {
+    margin: 20px 0 10px 0;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#article-details h2 a {
+    text-decoration: none;
+    color: var(--DarkBlue);
+    
+}
+
+#article:hover #article-details h2 a {
+    color: var(--LimeGreen);
+    cursor: pointer;
+}
+
+#article-details p {
+    color: var(--GrayishBlue);
+    line-height: 20px;
+}
+
+@media (max-width:375px) {
+    .articles{
+        width: 375px;
+        height: auto;
+        padding: 50px 30px 100px;
+    }
+    
+    .articles h1 {
+        font-size: 50px;
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    .articles-tab {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+    }
+    
+    #article {
+        width: 320px;
+        height: auto;
+    }
+    
+    #article:not(:last-of-type) {
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    
+    #article img {
+        width: 320px;
+        height: 230px;
+    }
+
+    #article-details h2 {
+        margin: 20px 0 10px 0;
+        font-size: 19px;
+    }
+    
+    #article-details p {
+        font-size: 18px;
+        color: var(--GrayishBlue);
+        line-height: 20px;
+    }
+}
+
+
+/*start of article section*/
+
+
+/*start of footer section*/
+
+.footer {
+    width: 1440px;
+    display: grid;
+    grid-template-columns: 250px 200px 200px 430px ;
+    column-gap: 30px;
+    background-color: var(--DarkBlue);
+    padding: 70px 150px;
+    margin-bottom: 0;
+}
+
+#socials {
+    margin-top: 50px;
+}
+
+#social:not(:last-of-type) {
+    margin-right: 10px;
+}
+
+#social:hover path {
+    fill: var(--LimeGreen);
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: var(--White);
+}
+
+.footer ul li:not(:last-of-type) {
+   margin-bottom: 20px;
+}
+
+.footer ul li a:hover {
+    color: var(--LimeGreen);
+}
+
+#request {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+#request #request-invite {
+    margin-bottom: 20px;
+    float: right;
+}
+
+#request p {
+    color: var(--GrayishBlue);
+}
+
+
+@media (max-width:375px) {
+        
+    .footer {
+        width:375px;
+        display: grid;
+        grid-template-columns:100%;
+        grid-template-rows:repeat(4, 120px) ;
+        column-gap: 0px;
+        padding:40px 10px;
+    }
+
+    .footer #logo {
+       margin-left: 100px;
+    }
+    
+
+    #socials {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #social:not(:last-of-type) {
+        margin-right: 10px;
+    }
+
+    .footer ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #request {
+        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+
+/*end of footer section*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
